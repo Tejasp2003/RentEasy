@@ -8,6 +8,7 @@ import UserMenu from "./UserMenu";
 
 import { SafeUser } from "@/app/types";
 import Categories from "./Categories";
+import useGetLocation from "@/app/hooks/getLocation";
 
 interface NavbarProps{
   currentUser?: SafeUser | null;
@@ -18,7 +19,9 @@ const Navbar:React.FC<NavbarProps> = ({
   currentUser,
 }) => {
 
+
   return (
+
     <div className="fixed w-full z-10 bg-white shadow-sm">
       <div className="py-4 border-b-[1px]">
         <Container>

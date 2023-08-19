@@ -11,6 +11,7 @@ import {signOut} from "next-auth/react";
 import { SafeUser } from "@/app/types";
 import { useRouter } from "next/navigation";
 import useRentModal from "@/app/hooks/useRentModal";
+import useGetLocation from "@/app/hooks/getLocation";
 interface UserMenuProps {
   currentUser?: SafeUser | null;
 }
@@ -37,6 +38,9 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
 
 
   },[currentUser,loginModal, rentModal])
+
+
+
   return (
     <div className="relative flex flex-row">
       <div className="flex flex-row items-center gap-3">

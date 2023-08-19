@@ -8,6 +8,7 @@ import LoginModal from "@/components/modals/LoginModal";
 import { getCurrentUser } from "./actions/getCurrentUser";
 import RentModal from "@/components/modals/RentModal";
 import SearchModal from "@/components/modals/SerchModal";
+import useGetLocation from "./hooks/getLocation";
 
 
 export const metadata = {
@@ -24,6 +25,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const currentUser = await getCurrentUser();
+
+  
   return (
     
     <html lang="en">
@@ -31,6 +34,7 @@ export default async function RootLayout({
         <ClientOnly>
           <ToasterProvider  />
           <SearchModal />
+          
           <RentModal />
           < LoginModal />
           <RegisterModal />

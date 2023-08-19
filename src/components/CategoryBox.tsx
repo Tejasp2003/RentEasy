@@ -2,7 +2,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback } from "react";
 import { IconType } from "react-icons";
-import qs from "query-string"
+import qs from "query-string";
 interface CategoryBoxProps {
   icon: IconType;
   label: string;
@@ -14,31 +14,33 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   label,
   selected,
 }) => {
-    const router = useRouter();
-    const params = useSearchParams();
+  const router = useRouter();
+  const params = useSearchParams();
 
-    const handleClick = useCallback(()=>{
-        let currentQuery = {};
-        if (params){
-            currentQuery = qs.parse(params.toString()); 
-        }
-        const updatedQuery: any= {
-            ...currentQuery,
-            category: label,
-        }
-        if(params?.get("category")=== label){
-            delete updatedQuery.category;
-        }
-        const url= qs.stringifyUrl({
-            url: "/",
-            query: updatedQuery,
-        },{skipEmptyString: true, skipNull: true})
-        router.push(url);
-
-    }, [ params, label, router])
+  const handleClick = useCallback(() => {
+    let currentQuery = {};
+    if (params) {
+      currentQuery = qs.parse(params.toString());
+    }
+    const updatedQuery: any = {
+      ...currentQuery,
+      category: label,
+    };
+    if (params?.get("category") === label) {
+      delete updatedQuery.category;
+    }
+    const url = qs.stringifyUrl(
+      {
+        url: "/",
+        query: updatedQuery,
+      },
+      { skipEmptyString: true, skipNull: true }
+    );
+    router.push(url);
+  }, [params, label, router]);
   return (
     <div
-    onClick={handleClick}
+      onClick={handleClick}
       className={`flex 
     flex-col 
     items-center 

@@ -1,4 +1,5 @@
 "use client";
+import useGetLocation from "@/app/hooks/getLocation";
 import React from "react";
 import { useState, useEffect } from "react";
 
@@ -8,7 +9,10 @@ interface clientOnlyProps{
 
 const ClientOnly: React.FC<clientOnlyProps> = ({children}) => {
   const [hasMounted, setHasMounted] = useState(false);
+
   useEffect(() => {
+   
+
     setHasMounted(true)
   }, [])
     if (!hasMounted) {
