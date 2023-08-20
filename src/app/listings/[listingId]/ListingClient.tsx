@@ -77,9 +77,9 @@ const ListingClient: React.FC<ListingClientProps> = ({
         listingId: listing?.id
       })
       .then(() => {
-        toast.success('Listing reserved!');
+        
         setDateRange(initialDateRange);
-        router.push('/trips');
+      
       })
       .catch(() => {
         toast.error('Something went wrong.');
@@ -88,14 +88,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
         setIsLoading(false);
       })
   },
-  [
-    totalPrice, 
-    dateRange, 
-    listing?.id,
-    router,
-    currentUser,
-    loginModal
-  ]);
+  []);
 
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
@@ -162,6 +155,11 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 onSubmit={onCreateReservation}
                 disabled={isLoading}
                 disabledDates={disabledDates}
+                title={listing.title}
+                imageSrc={listing.imageSrc}
+                locationValue={listing.locationValue}
+                id={listing.id}
+
               />
             </div>
           </div>

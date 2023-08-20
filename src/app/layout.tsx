@@ -9,6 +9,7 @@ import { getCurrentUser } from "./actions/getCurrentUser";
 import RentModal from "@/components/modals/RentModal";
 import SearchModal from "@/components/modals/SerchModal";
 import useGetLocation from "./hooks/getLocation";
+import LocationComponent from "@/components/getLoc";
 
 
 export const metadata = {
@@ -34,7 +35,7 @@ export default async function RootLayout({
         <ClientOnly>
           <ToasterProvider  />
           <SearchModal />
-          
+          {/* <LocationComponent /> */}
           <RentModal />
           < LoginModal />
           <RegisterModal />

@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useCallback, useMemo } from "react";
 import { format } from "date-fns";
 import Image from "next/image";
@@ -8,7 +10,8 @@ import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import useCountries from "@/app/hooks/useCountries";
 import { AiFillStar } from "react-icons/ai";
 import { IoPeopleSharp } from "react-icons/io5";
-import useGetLocation from "@/app/hooks/getLocation";
+import { useRouter } from "next/navigation";
+
 
 interface ListingCardProps {
   data: SafeListing;
@@ -30,6 +33,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
   currentUser,
 }) => {
   const { getByValue } = useCountries();
+  const router = useRouter()
+
     
   
   const location = getByValue(data.locationValue);
@@ -71,12 +76,13 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
   const randomPeople: any = Math.floor(Math.random() * (150 - 20 + 1) + 20);
 
+
   return (
-    <Link
-      href={`/listings/${data.id}`}
-      className="col-span-1 cursor-pointer group"
-    >
-      <div className="flex flex-col gap-2 w-full">
+    
+     
+      <div className="flex flex-col gap-2 w-full"
+      onClick={() => router.push(`/listings/${data.id}`)} 
+      >
         <div className="aspect-square w-full relative overflow-hidden rounded-xl">
           <Image
             fill
@@ -125,7 +131,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
           />
         )}
       </div>
-    </Link>
+   
   );
 };
 
