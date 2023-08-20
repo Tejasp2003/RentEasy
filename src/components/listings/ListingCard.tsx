@@ -126,14 +126,16 @@ const ListingCard: React.FC<ListingCardProps> = ({
           {!reservation && <div className="font-light">night</div>}
         </div>
 
-        {onAction && actionLabel && (
+        {onAction && actionLabel && 
+          reservation?.endDate && reservation?.endDate >= new Date().toISOString()  ? 
+        (
           <Button
             disabled={disabled}
             small
             label={actionLabel}
             onClick={handleCancel}
           />
-        )}
+        ):  null}
         </div>
       </div>
    
