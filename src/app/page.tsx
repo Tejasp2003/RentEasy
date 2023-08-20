@@ -1,5 +1,5 @@
 
-
+export const dynamic = 'force-dynamic'
 import React from "react";
 import getListings, { IListingsParams } from "@/app/actions/getListings";
 import { getCurrentUser } from "./actions/getCurrentUser";
