@@ -24,6 +24,8 @@ const TripsClient: React.FC<TripsClientProps> = ({
   const router = useRouter();
   const [deletingId, setDeletingId] = useState('');
 
+  console.log(reservations);
+
   const onCancel = useCallback((id: string) => {
     setDeletingId(id);
 
@@ -65,7 +67,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
             data={reservation.listing}
             reservation={reservation}
             actionId={reservation.id}
-            onAction={onCancel}
+            onAction = {reservation.endDate < new Date() ? undefined : onCancel}
             disabled={deletingId === reservation.id}
             actionLabel="Cancel reservation"
             currentUser={currentUser}

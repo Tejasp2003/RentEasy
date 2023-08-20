@@ -53,7 +53,7 @@ export const authOptions: AuthOptions = {
     })
   ],
   pages: {
-    signIn: '/',
+    signIn: 'https://rent-easy-next.vercel.app/',
   },
   debug: process.env.NODE_ENV === 'development',
   session: {
