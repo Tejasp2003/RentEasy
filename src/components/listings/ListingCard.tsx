@@ -21,6 +21,7 @@ interface ListingCardProps {
   actionLabel?: string;
   actionId?: string;
   currentUser?: SafeUser | null;
+
 }
 
 const ListingCard: React.FC<ListingCardProps> = ({
@@ -127,7 +128,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
         </div>
 
         {onAction && actionLabel && 
-          reservation?.endDate && reservation?.endDate >= new Date().toISOString()  ? 
+         actionLabel   ? 
         (
           <Button
             disabled={disabled}

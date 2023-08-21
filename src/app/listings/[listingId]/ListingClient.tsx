@@ -17,6 +17,7 @@ import Container from "@/components/Container";
 import ListingHead from "@/components/listings/ListingHead";
 import ListingInfo from "@/components/listings/ListingInfo";
 import ListingReservation from "@/components/listings/ListingReservation";
+import ListingReview from "@/components/listings/ListingReview";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -30,15 +31,19 @@ interface ListingClientProps {
     user: SafeUser;
   };
   currentUser?: SafeUser | null;
+  reviews: any[] | null;
 }
 
 const ListingClient: React.FC<ListingClientProps> = ({
   listing,
   reservations =[],
-  currentUser
+  currentUser,
+  reviews
 }) => {
   const loginModal = useLoginModal();
   const router = useRouter();
+
+  console.log("reviews: ", reviews)
 
   const disabledDates = useMemo(() => {
     let dates: Date[] = [];
@@ -161,9 +166,12 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 id={listing.id}
 
               />
+              {/* <ListingReview reviews={reviews} /> */}
+              {reviews && <ListingReview reviews={reviews} />}
             </div>
           </div>
         </div>
+        
       </div>
     </Container>
    );

@@ -7,6 +7,7 @@ import Avatar from "../Avatar";
 
 import ListingCategory from "./ListingCategory";
 import dynamic from "next/dynamic";
+import getReviewsById from "@/app/actions/getReviewsById";
 
 interface ListingInfoProps {
   user: SafeUser;
@@ -33,6 +34,8 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
   category,
 }) => {
   const { getByValue } = useCountries();
+
+  
   const coordinates = getByValue(locationValue)?.latlng;
   const Map = dynamic(() => import('../Map'), { 
     ssr: false 
